@@ -22,6 +22,7 @@ html {
 
 html {
   background-color: black;
+  background: url("./images/space_smaller.jpg") center / cover no-repeat fixed;
   color: rgb(232, 239, 228);
 }
 
@@ -29,13 +30,14 @@ html {
    Основні стилі
 ********************************************************* */
 body {
-  min-height: 100dvh;
-  padding: 20px;
-  background: url("./images/space_smaller.jpg") center / cover no-repeat fixed;
   font: 16px / 1.5 system-ui, "Open Sans", "Helvetica Neue", sans-serif;
   letter-spacing: 1px;
   opacity: 0;
   transition: opacity 0.6s ease;
+
+  min-height: 100dvh; /* Ensures body takes full viewport height */
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
 }
 
 body.loaded {
@@ -56,39 +58,43 @@ h3 {
 }
 
 h1 {
-  font-size: 1.7rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 900;
   letter-spacing: 3px;
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 800;
   letter-spacing: 2px;
 }
 
 h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 700;
   letter-spacing: 2px;
   margin: 15px 0;
-  display: inline-block;
-  padding: 5px;
-  border-bottom: 2px dashed var(--clr-borders);
+  padding: 5px 10px;
+  background: #eff0ed14;
+  text-align: center;
 }
 
 p {
   margin: 10px 0;
+  text-align: justify;
+}
+
+p.topic {
+  text-align: center;
 }
 
 .accent {
-  color: var(--clr-accent);
+  /* color: var(--clr-accent); */
+  color: var(--clr-title);
   font-weight: 500;
 }
 
-h3,
 .accent-2 {
-  /* background-color: #333; */
   background: #eff0ed1d;
   padding: 0 6px;
   font-weight: 400;
@@ -167,13 +173,14 @@ header {
   border-bottom: none;
   border-radius: 5px 5px 0 0;
   text-align: center;
+  margin-top: 20px;
 }
 
 main {
-  padding-bottom: 5px;
   background-color: rgba(18, 19, 18, 0.75);
   border: 1px solid var(--clr-borders);
   border-radius: 0 0 5px 5px;
+  margin-bottom: 20px;
 }
 
 section {
@@ -247,6 +254,8 @@ button {
   gap: 10px;
   background-color: rgb(14, 14, 14);
   padding: 8px 0;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .tab-btn {
@@ -258,6 +267,11 @@ button {
   border-radius: 5px;
   font-family: monospace;
   transition: 0.3s;
+  flex: 1;
+}
+
+.tab-btn.homework {
+  color: var(--clr-title);
 }
 
 .tab-btn:hover {
@@ -268,6 +282,10 @@ button {
   background-color: var(--clr-accent);
   color: black;
   font-weight: bold;
+}
+
+.tab-btn.homework.active {
+  background-color: var(--clr-title);
 }
 
 .tab-content {
@@ -287,6 +305,14 @@ button {
   cursor: pointer;
   user-select: none;
   gap: 0.5em;
+  padding: 10px 20px;
+  margin: -10px -20px;
+}
+
+.toggle-header.active {
+  background: #eff0ed1d;
+  border-bottom: 2px dashed var(--clr-accent);
+  margin: -10px -20px 10px -20px;
 }
 
 .toggle-header button {
@@ -411,9 +437,10 @@ ul.menu > li > a:hover {
    Section navigation
 ********************************************************* */
 
-.section-nav {
-  background: #eff0ed1d;
-  border-left: 4px solid var(--clr-title);
+nav.section-nav {
+  background-color: rgb(15, 15, 15);
+  border: 1px solid var(--clr-borders);
+  border-left: 5px solid var(--clr-title);
   padding: 1em 1.2em;
   margin: 1em 0 1em;
   border-radius: 0.5em;
@@ -425,11 +452,14 @@ ul.menu > li > a:hover {
   font-weight: bold;
   margin-bottom: 0.5em;
   margin-top: 0;
+  text-decoration: underline;
 }
 
 .section-nav ul {
   margin: 0;
   padding: 0;
+
+  flex-direction: column;
 }
 
 .section-nav li {
@@ -477,7 +507,7 @@ ul.menu > li > a:hover {
 @media (min-width: 651px) and (max-width: 850px) {
   header,
   main {
-    max-width: 85%;
+    max-width: 94%;
   }
 }
 
@@ -500,4 +530,44 @@ ul.menu > li > a:hover {
     width: 90%;
     height: auto;
   }
+}
+
+.test-link {
+  display: block;
+  color: var(--clr-title);
+  background: none;
+  border: 3px outset var(--clr-borders);
+  padding: 5px 20px;
+  margin: 5px auto;
+  width: 150px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+}
+.test-link:hover {
+  color: black;
+  background: var(--clr-title);
+  border-color: white;
+}
+.test-link:active {
+  transform: scale(0.95);
+}
+
+hr {
+  height: 0;
+  padding: 0;
+  margin: 25px auto;
+  border: 0;
+  border-top: 4px dotted var(--clr-accent);
+}
+
+.content-wrapper {
+  flex-grow: 1; /* Allows the content to expand and push the footer down */
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  font-style: italic;
 }
