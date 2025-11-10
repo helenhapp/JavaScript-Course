@@ -112,6 +112,7 @@ header nav ul {
   display: flex;
   justify-content: space-around;
   list-style-type: none;
+  padding-left: 0;
 }
 
 header nav a {
@@ -119,12 +120,13 @@ header nav a {
   font-size: 12px;
   display: block;
   width: 100px;
+  text-align: center;
 }
 
 header p {
   text-align: center;
   font-size: 18px;
-  font-style: italic;
+  /* font-style: italic; */
   color: lightgray;
 }
 
