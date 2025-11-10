@@ -431,15 +431,9 @@ a:hover {
     flex-direction: column;
   }
 
-  /* img {
-    width: 100%;
-    height: auto;
+  p {
+    font-size: 14px;
   }
-
-  .img-container img {
-    width: 90%;
-    height: auto;
-  } */
 }
 
 /* ===== TYPEWRITER ANIMATION ===== */
