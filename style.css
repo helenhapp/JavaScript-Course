@@ -1,56 +1,284 @@
-/* *******************************************************
-   Змінні
-********************************************************* */
+/* ===== VARIABLES ===== */
+
 :root {
-  --clr-borders: rgba(241, 232, 150, 0.915);
-  --clr-accent: rgba(158, 187, 99, 0.908);
-  --clr-title: rgba(240, 221, 112, 0.89);
+  --clr-title: rgba(245, 221, 112, 1);
+  --clr-borders: rgba(241, 232, 150, 0.9);
+  --clr-accent: rgba(207, 245, 130, 0.9);
+
+  --clr-background-lighter: rgba(225, 225, 225, 0.1);
+  --clr-background-medium: rgba(20, 20, 20, 0.7);
+  --clr-background-darker: rgba(15, 15, 15, 1);
+
+  --width-large-screen: 70%;
+  --width-medium-screen: 90%;
+  --width-small-screen: 95%;
 }
 
-/* *******************************************************
-   Скидання стилів (CSS Reset)
-********************************************************* */
-* {
+/* ===== CSS RESET ===== */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+* {
   margin: 0;
-  padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-html {
-  background-color: black;
-  background: url("./images/space_smaller.jpg") center / cover no-repeat fixed;
-  color: rgb(232, 239, 228);
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
-/* *******************************************************
-   Основні стилі
-********************************************************* */
-body {
-  font: 16px / 1.5 system-ui, "Open Sans", "Helvetica Neue", sans-serif;
-  letter-spacing: 1px;
-  opacity: 0;
-  transition: opacity 0.6s ease;
+p,
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+}
 
-  min-height: 100dvh; /* Ensures body takes full viewport height */
+/* ===== UTILS ===== */
+
+.accent {
+  color: var(--clr-accent);
+}
+
+.flex {
   display: flex;
-  flex-direction: column; /* Stacks children vertically */
-}
-
-body.loaded {
-  opacity: 1;
+  gap: 1rem;
 }
 
 .hidden {
   display: none;
 }
 
-/* *******************************************************
-   Типографіка
-********************************************************* */
+/* ===== MAIN STYLES ===== */
+
+html {
+  scroll-behavior: smooth;
+  background-color: black;
+  color: white;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: url("./images/space.jpg") center / cover no-repeat fixed;
+  font: 16px / 1.5 system-ui, "Open Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: 1px;
+
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+.content-wrapper {
+  width: 100%;
+  margin: 20px auto;
+  flex-grow: 1;
+}
+
+header {
+  width: var(--width-large-screen);
+  background-color: var(--clr-background-darker);
+  text-align: center;
+  padding: 10px;
+  border: 1px solid var(--clr-borders);
+  border-radius: 5px 5px 0 0;
+  margin: 0 auto;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+header nav a {
+  opacity: 0.55;
+  font-size: 12px;
+  display: block;
+  width: 100px;
+}
+
+header p {
+  text-align: center;
+  font-size: 18px;
+  font-style: italic;
+  color: lightgray;
+}
+
+main {
+  width: var(--width-large-screen);
+  background-color: var(--clr-background-medium);
+  border: 1px solid var(--clr-borders);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--clr-borders);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  font-style: italic;
+}
+
+/* ===== TABS ===== */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 0;
+  margin: 0 auto;
+}
+
+.tab-btn {
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--clr-borders);
+  color: var(--clr-accent);
+  padding: 5px 12px;
+  line-height: 1.4;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: 0.3s;
+  flex: 1;
+}
+
+.tab-btn:hover {
+  background-color: var(--clr-background-lighter);
+}
+
+.tab-btn.active {
+  background-color: var(--clr-accent);
+  border: 1px outset white;
+  color: black;
+  font-weight: bold;
+}
+
+.tab-btn.homework {
+  color: var(--clr-title);
+}
+
+.tab-btn.homework.active {
+  background-color: var(--clr-title);
+  color: black;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ===== TOGGLE HEADERS ===== */
+
+.toggle-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 0.5rem;
+  padding: 10px 20px;
+  margin: -10px -20px;
+}
+
+.toggle-header.active {
+  background-color: var(--clr-background-lighter);
+  border-bottom: 2px dashed var(--clr-accent);
+  margin: -10px -20px 10px;
+}
+
+.toggle-header button {
+  transition: transform 0.3s ease;
+  color: var(--clr-title);
+  font-family: monospace;
+  background: none;
+  border: none;
+}
+
+.toggle-header.active button {
+  transform: rotate(90deg);
+}
+
+.content {
+  display: none;
+}
+.toggle-header.active + .content {
+  display: block;
+}
+
+/* ===== SECTION NAVIGATION ===== */
+
+nav.section-nav {
+  background-color: var(--clr-background-darker);
+  border: 1px solid var(--clr-borders);
+  border-left: 5px solid var(--clr-accent);
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 9px;
+}
+
+.section-nav .nav-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section-nav li {
+  margin: 5px 0;
+}
+
+.section-nav a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.2s;
+}
+
+.section-nav a:hover {
+  color: var(--clr-accent);
+}
+
+/* ===== TEXT ===== */
+
 h1,
 h2,
 h3 {
@@ -58,6 +286,7 @@ h3 {
 }
 
 h1 {
+  color: var(--clr-title);
   font-size: 1.8rem;
   font-weight: 900;
   letter-spacing: 3px;
@@ -80,121 +309,22 @@ h3 {
 }
 
 p {
-  margin: 10px 0;
   text-align: justify;
+  margin: 10px 0;
 }
 
-p.topic {
-  text-align: center;
+hr {
+  height: 0;
+  padding: 0;
+  margin: 25px auto;
+  border: 0;
+  border-top: 4px dotted var(--clr-accent);
 }
 
-.accent {
-  /* color: var(--clr-accent); */
-  color: var(--clr-title);
-  font-weight: 500;
-}
+/* ===== IMAGES ===== */
 
-.accent-2 {
-  background: #eff0ed1d;
-  padding: 0 6px;
-  font-weight: 400;
-}
+/* ===== BUTTONS ===== */
 
-a {
-  color: var(--clr-title);
-  font-weight: normal;
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--clr-accent);
-}
-
-/* *******************************************************
-   Зображення
-********************************************************* */
-img {
-  border: 2px inset black;
-  display: block;
-  max-width: 100%;
-}
-
-.img-container {
-  margin: 20px 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 5px;
-}
-
-.img-container img {
-  height: 120px;
-  display: inline;
-  border: 2px solid var(--clr-borders);
-}
-
-img.dashed {
-  border: 4px dashed lightgreen;
-  width: 150px;
-  height: auto;
-  border-radius: 20px;
-}
-
-img.dotted {
-  border: 4px dotted lightpink;
-  border-radius: 50%;
-}
-
-img.double {
-  border: 7px double lightcoral;
-}
-
-img.outset {
-  border: 5px outset mediumslateblue;
-  height: 150px;
-}
-
-/* *******************************************************
-   Макет сторінки
-********************************************************* */
-header,
-main {
-  max-width: 70%;
-  margin: 0 auto;
-}
-
-header {
-  padding: 10px;
-  color: var(--clr-title);
-  background-color: rgb(15, 15, 15);
-  border: 1px solid var(--clr-borders);
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-  text-align: center;
-  margin-top: 20px;
-}
-
-main {
-  background-color: rgba(18, 19, 18, 0.75);
-  border: 1px solid var(--clr-borders);
-  border-radius: 0 0 5px 5px;
-  margin-bottom: 20px;
-}
-
-section {
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--clr-borders);
-}
-
-section:last-of-type {
-  border-bottom: none;
-}
-
-/* *******************************************************
-   Кнопки та утиліти
-********************************************************* */
 button {
   cursor: pointer;
   border: none;
@@ -202,15 +332,117 @@ button {
   color: var(--clr-accent);
 }
 
-.flex {
-  display: flex;
+#scrollTopBtn {
+  cursor: pointer;
+
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+
+  background-color: var(--clr-background-lighter);
+  color: var(--clr-accent);
+  border: 1px solid var(--clr-borders);
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--clr-borders);
+
+  width: 35px;
+  height: 35px;
+  font-size: 15px;
+
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+
+  z-index: 999;
+  transition: opacity 0.3s, transform 0.2s;
+  display: none;
 }
 
-/* *******************************************************
-   Анімація "друкарської машинки"
-********************************************************* */
+#scrollTopBtn:hover {
+  transform: scale(1.1);
+}
+
+/* ===== LISTS ===== */
+
+ul,
+ol {
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+}
+
+li {
+  margin: 5px 0;
+}
+
+li::marker {
+  color: var(--clr-accent);
+}
+
+/* ===== LINKS ===== */
+
+a {
+  color: var(--clr-accent);
+  font-weight: normal;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--clr-title);
+}
+
+.test-link {
+  display: block;
+  color: var(--clr-title);
+  background: none;
+  border: 3px outset var(--clr-borders);
+  padding: 5px 20px;
+  margin: 5px auto;
+  width: 150px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.test-link:hover {
+  color: black;
+  background: var(--clr-title);
+  border-color: white;
+}
+
+.test-link:active {
+  transform: scale(0.95);
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+@media (min-width: 651px) and (max-width: 850px) {
+  header,
+  main {
+    width: var(--width-medium-screen);
+  }
+}
+
+@media (max-width: 650px) {
+  header,
+  main {
+    width: var(--width-small-screen);
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  /* img {
+    width: 100%;
+    height: auto;
+  }
+
+  .img-container img {
+    width: 90%;
+    height: auto;
+  } */
+}
+
+/* ===== TYPEWRITER ANIMATION ===== */
 .typewriter {
   display: flex;
   justify-content: center;
@@ -243,331 +475,4 @@ button {
   to {
     border-color: transparent;
   }
-}
-
-/* *******************************************************
-   Вкладки (Tabs)
-********************************************************* */
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  background-color: rgb(14, 14, 14);
-  padding: 8px 0;
-  max-width: 90%;
-  margin: 0 auto;
-}
-
-.tab-btn {
-  cursor: pointer;
-  background: none;
-  border: 1px solid var(--clr-borders);
-  color: var(--clr-accent);
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-family: monospace;
-  transition: 0.3s;
-  flex: 1;
-}
-
-.tab-btn.homework {
-  color: var(--clr-title);
-}
-
-.tab-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.tab-btn.active {
-  background-color: var(--clr-accent);
-  color: black;
-  font-weight: bold;
-}
-
-.tab-btn.homework.active {
-  background-color: var(--clr-title);
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-/* *******************************************************
-   Заголовки, що розкриваються (Toggle Headers)
-********************************************************* */
-.toggle-header {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  gap: 0.5em;
-  padding: 10px 20px;
-  margin: -10px -20px;
-}
-
-.toggle-header.active {
-  background: #eff0ed1d;
-  border-bottom: 2px dashed var(--clr-accent);
-  margin: -10px -20px 10px -20px;
-}
-
-.toggle-header button {
-  transition: transform 0.3s ease;
-  color: var(--clr-title);
-}
-
-.toggle-header.active button {
-  transform: rotate(90deg);
-}
-
-.content {
-  display: none;
-}
-.toggle-header.active + .content {
-  display: block;
-}
-
-/* *******************************************************
-   Списки
-********************************************************* */
-li::marker {
-  color: var(--clr-accent);
-}
-
-li {
-  margin: 5px 0;
-}
-
-ul,
-ol {
-  padding-left: 1.5em;
-  margin: 0.5em 0;
-  color: inherit;
-  list-style: none;
-}
-
-.inner-list {
-  list-style-type: circle;
-  margin-left: 1rem;
-  font-size: 15px;
-}
-
-input[type="checkbox"] {
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-input[type="checkbox"]:checked + span {
-  text-decoration: line-through;
-  color: gray;
-}
-
-.progress-container {
-  width: 100%;
-  background: #4f524d7f;
-  border-radius: 15px;
-  overflow: hidden;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  height: 22px;
-  border: 1px solid var(--clr-borders);
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background-color: var(--clr-accent);
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  line-height: 22px;
-  transition: width 0.3s ease;
-}
-
-ol.example {
-  list-style-type: decimal;
-}
-
-ul.example {
-  list-style-type: disc;
-}
-
-nav > ul {
-  display: flex;
-  justify-content: space-around;
-}
-
-nav > ul > li > a {
-  color: rgba(211, 211, 211, 0.35);
-}
-
-ul.menu {
-  margin: 0;
-  padding: 0;
-}
-
-ul.menu > li > a {
-  color: #ccc;
-  font-size: 18px;
-  font-weight: bold;
-  display: block;
-
-  border: 1px solid var(--clr-accent);
-  border-radius: 5px;
-  margin: 15px 20px;
-  padding: 8px 15px;
-  background-color: rgba(15, 15, 15, 0.7);
-}
-
-ul.menu > li > a:hover {
-  color: var(--clr-borders);
-}
-
-.accent-3 {
-  color: #888;
-  font-weight: 400;
-  font-style: italic;
-}
-
-/* *******************************************************
-   Section navigation
-********************************************************* */
-
-nav.section-nav {
-  background-color: rgb(15, 15, 15);
-  border: 1px solid var(--clr-borders);
-  border-left: 5px solid var(--clr-title);
-  padding: 1em 1.2em;
-  margin: 1em 0 1em;
-  border-radius: 0.5em;
-  font-size: 0.95rem;
-  color: white;
-}
-
-.section-nav .nav-title {
-  font-weight: bold;
-  margin-bottom: 0.5em;
-  margin-top: 0;
-  text-decoration: underline;
-}
-
-.section-nav ul {
-  margin: 0;
-  padding: 0;
-
-  flex-direction: column;
-}
-
-.section-nav li {
-  margin: 0.3em 0;
-}
-
-.section-nav a {
-  text-decoration: none;
-  color: whitesmoke;
-  transition: color 0.2s;
-}
-
-.section-nav a:hover {
-  color: var(--clr-accent);
-}
-
-#scrollTopBtn {
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  background-color: rgba(18, 19, 18, 0.75);
-  color: var(--clr-accent);
-  border: 1px solid var(--clr-borders);
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  font-size: 15px;
-  cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 5px rgb(229, 231, 226);
-  transition: opacity 0.3s, transform 0.2s;
-  z-index: 999;
-}
-
-#scrollTopBtn:hover {
-  transform: scale(1.2);
-}
-
-/* *******************************************************
-   Адаптивність
-********************************************************* */
-
-@media (min-width: 651px) and (max-width: 850px) {
-  header,
-  main {
-    max-width: 94%;
-  }
-}
-
-@media (max-width: 650px) {
-  header,
-  main {
-    max-width: 98%;
-  }
-
-  .tabs {
-    flex-direction: column;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-
-  .img-container img {
-    width: 90%;
-    height: auto;
-  }
-}
-
-.test-link {
-  display: block;
-  color: var(--clr-title);
-  background: none;
-  border: 3px outset var(--clr-borders);
-  padding: 5px 20px;
-  margin: 5px auto;
-  width: 150px;
-  border-radius: 5px;
-  font-weight: 600;
-  text-align: center;
-}
-.test-link:hover {
-  color: black;
-  background: var(--clr-title);
-  border-color: white;
-}
-.test-link:active {
-  transform: scale(0.95);
-}
-
-hr {
-  height: 0;
-  padding: 0;
-  margin: 25px auto;
-  border: 0;
-  border-top: 4px dotted var(--clr-accent);
-}
-
-.content-wrapper {
-  flex-grow: 1; /* Allows the content to expand and push the footer down */
-}
-
-footer {
-  text-align: center;
-  font-size: 12px;
-  padding: 10px;
-  font-style: italic;
 }
