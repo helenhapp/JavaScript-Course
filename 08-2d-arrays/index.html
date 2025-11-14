@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Тема #</title>
+    <title>Тема 8</title>
 
     <!-- ***********************************************
      Prism.js — підсвічування синтаксису
@@ -57,153 +57,353 @@
   </head>
 
   <body>
-    <!-- ***********************************************
-         Шапка сторінки
-    *************************************************** -->
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#">← тема #</a></li>
-          <li><a href="../index.html">всі теми</a></li>
-          <li><a href="#">тема # →</a></li>
-        </ul>
-      </nav>
+    <div class="content-wrapper">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="#">← тема 7</a></li>
+            <li><a href="../index.html">всі теми</a></li>
+            <li><a href="#">тема 9 →</a></li>
+          </ul>
+        </nav>
 
-      <div class="typewriter">
-        <div><h1>⭒.⋆ Тема # ⋆˚.</h1></div>
-      </div>
+        <div class="typewriter">
+          <div><h1>⭒.⋆ Тема 8 ⋆˚.</h1></div>
+        </div>
 
-      <p><span class="accent">Назва теми</span></p>
+        <p>1) Двовимірні масиви</p>
+        <p>2) Типи даних</p>
 
-      <!-- Вкладки (навігація між частинами) -->
-      <nav class="tabs">
-        <button type="button" class="tab-btn active" data-tab="part1">
-          частина 1
-        </button>
-        <button type="button" class="tab-btn" data-tab="part2">
-          частина 2
-        </button>
-      </nav>
-    </header>
+        <!-- Вкладки (навігація між частинами) -->
+        <nav class="tabs">
+          <button type="button" class="tab-btn active" data-tab="part1">
+            2D масиви
+          </button>
+          <button type="button" class="tab-btn" data-tab="part2">
+            перебір 2D масивів
+          </button>
+          <button type="button" class="tab-btn" data-tab="part3">
+            типи даних
+          </button>
+          <!-- <button type="button" class="tab-btn homework" data-tab="part4">
+            Домашнє завдання
+          </button> -->
+        </nav>
+      </header>
 
-    <!-- ***********************************************
-         Основний вміст сторінки
-    *************************************************** -->
-    <main>
-      <!-- *************** Частина 1 *************** -->
-      <div class="tab-content active" id="tab-part1">
-        <!-- ТЕОРІЯ 1 -->
-        <section>
-          <div class="flex toggle-header">
-            <button type="button">▶</button>
-            <h2><span class="accent">Частина 1: </span>Теорія</h2>
-          </div>
+      <main>
+        <!-- ===== ЧАСТИНА 1 - 2D масиви ===== -->
+        <div class="tab-content active" id="tab-part1">
+          <!-- ТЕОРІЯ 1 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2>Теорія</h2>
+            </div>
 
-          <div class="content">
-            <h3>Підтема #</h3>
-            <p>...</p>
-            <pre><code class="language-javascript">console.log("Hello, world!")</code></pre>
-            <img src="./images/part_#_0#.jpg" alt="code result" />
-          </div>
-        </section>
+            <div class="content">
+              <hr />
 
-        <!-- ПРИКЛАД 1 -->
-        <section>
-          <div class="flex toggle-header">
-            <button type="button">▶</button>
-            <h2><span class="accent">Частина 1: </span>Приклад</h2>
-          </div>
+              <!-- Двовимірні масиви це -->
+              <h3 id="2d-arrays">✨ 2D масиви</h3>
+              <p>
+                Двовимірний масив — це масив, всередині якого є інші масиви. Він
+                схожий на таблицю або матрицю — теж має рядки та стовпці. Такі
+                масиви зручно використовувати для ігор. Створимо матрицю 2x4 (2
+                рядки, 4 стовпці):
+              </p>
+              <pre><code class="language-javascript">const matrix = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+];
 
-          <div class="content">
-            <h3>Завдання</h3>
-            <ol class="example">
-              <li>...</li>
-            </ol>
+console.log(matrix);</code></pre>
+              <img src="./images/part_1_01.jpg" alt="результат коду" />
 
-            <h3>Приклад розв'язання</h3>
-            <pre><code class="language-javascript">console.log("Hello, world!")</code></pre>
+              <hr />
 
-            <h3>Результат</h3>
-            <img src="./images/part_#_0#.jpg" alt="code result" />
-          </div>
-        </section>
+              <!-- Доступ до елементів 2D масиву -->
+              <h3 id="2d-arrays-index">✨ Доступ до елементів 2D масиву</h3>
+              <p>
+                Як бачите, маємо один зовнішній масив з двома елементами, які
+                також є масивами. Доступ до елементів зовнішнього масиву:
+              </p>
+              <pre><code class="language-javascript">console.log("1-й рядок матриці:", matrix[0]);
+console.log("2-й рядок матриці:", matrix[1]);</code></pre>
+              <img src="./images/part_1_02.jpg" alt="результат коду" />
 
-        <!-- ЗАВДАННЯ 1 -->
-        <section>
-          <div class="flex toggle-header">
-            <button type="button">▶</button>
-            <h2>Завдання 1</h2>
-          </div>
+              <p>Доступ до елементів внутрішніх масивів (рядків):</p>
+              <pre><code class="language-javascript">console.log("1-й елемент 1-го рядка:", matrix[0][0]);
+console.log("2-й елемент 1-го рядка:", matrix[0][1]);
+console.log("3-й елемент 1-го рядка:", matrix[0][2]);
+console.log("4-й елемент 1-го рядка:", matrix[0][3], "\n");
 
-          <div class="content">
-            <h3>Завдання</h3>
-            <ol class="example">
-              <li>...</li>
-            </ol>
+console.log("1-й елемент 2-го рядка:", matrix[1][0]);
+console.log("2-й елемент 2-го рядка:", matrix[1][1]);
+console.log("3-й елемент 2-го рядка:", matrix[1][2]);
+console.log("4-й елемент 2-го рядка:", matrix[1][3], "\n");</code></pre>
+              <img src="./images/part_1_03.jpg" alt="результат коду" />
+              <p>
+                Тепер маємо дві пари квадратних дужок <code>[]</code>. За номер
+                рядка відповідає індекс у перших дужках, за номер елемента у
+                рядку — індекс у других.
+              </p>
 
-            <h3>Очікуваний результат</h3>
-            <img src="./images/part_#_0#.jpg" alt="code result" />
-          </div>
-        </section>
-      </div>
+              <hr />
 
-      <!-- *************** Частина 2 *************** -->
-      <div class="tab-content" id="tab-part2">
-        <!-- ТЕОРІЯ 2 -->
-        <section>
-          <div class="flex toggle-header">
-            <button type="button">▶</button>
-            <h2><span class="accent">Частина 2: </span>Теорія</h2>
-          </div>
+              <!-- Довжина двовимірного масиву -->
+              <h3 id="2d-arrays-length">✨ 2D масиви та властивість .length</h3>
+              <p>
+                Якщо напишемо назву 2D масиву та .length, як результат отримаємо
+                не кількість всіх елементів, що є всередині масиву, а лише
+                кількість рядків у матриці (внутрішніх масивів).
+              </p>
+              <p>
+                З допомогою індексів можемо застосувати властивість .length
+                окремо до одного рядка, щоб дізнатися, скільки елементів є
+                конкретно в ньому.
+              </p>
+              <pre><code class="language-javascript">console.log(matrix.length); // кількість рядків
+console.log(matrix[0].length); // к-ть елементів у 1-му рядку</code></pre>
+              <img src="./images/part_1_04.jpg" alt="результат коду" />
 
-          <div class="content">
-            <h3>Підтема #</h3>
-            <p>...</p>
-            <pre><code class="language-javascript">console.log("Hello, world!")</code></pre>
-            <img src="./images/part_#_0#.jpg" alt="code result" />
-          </div>
-        </section>
+              <hr />
+            </div>
+          </section>
 
-        <!-- ПРИКЛАД 2 -->
-        <section>
-          <div class="flex toggle-header">
-            <button type="button">▶</button>
-            <h2><span class="accent">Частина 2: </span>Приклад</h2>
-          </div>
+          <!-- ПРИКЛАД 1 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2>Приклад</h2>
+            </div>
 
-          <div class="content">
-            <h3>Завдання</h3>
-            <ol class="example">
-              <li>...</li>
-            </ol>
+            <div class="content">
+              <h3>✨ Завдання</h3>
+              <ol>
+                <li>...</li>
+              </ol>
 
-            <h3>Приклад розв'язання</h3>
-            <pre><code class="language-javascript">console.log("Hello, world!")</code></pre>
+              <h3>✨ Приклад розв'язання</h3>
+              <pre><code class="language-javascript">приклад коду</code></pre>
 
-            <h3>Результат</h3>
-            <img src="./images/part_#_0#.jpg" alt="code result" />
-          </div>
-        </section>
+              <h3>✨ Результат</h3>
+              <img src="./images/part_1_0#.jpg" alt="результат коду" />
+            </div>
+          </section>
 
-        <!-- ЗАВДАННЯ 2 -->
-        <section>
-          <div class="flex toggle-header">
-            <button type="button">▶</button>
-            <h2>Завдання 2</h2>
-          </div>
+          <!-- ЗАВДАННЯ 1 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2 class="accent">Завдання 1</h2>
+            </div>
 
-          <div class="content">
-            <h3>Завдання</h3>
-            <ol class="example">
-              <li>...</li>
-            </ol>
+            <div class="content">
+              <h3>✨ Завдання</h3>
+              <ol>
+                <li>...</li>
+              </ol>
 
-            <h3>Очікуваний результат</h3>
-            <img src="./images/part_#_0#.jpg" alt="code result" />
-          </div>
-        </section>
-      </div>
-    </main>
+              <h3>✨ Очікуваний результат</h3>
+              <img src="./images/part_1_0#.jpg" alt="результат коду" />
+            </div>
+          </section>
+        </div>
+
+        <!-- ===== ЧАСТИНА 2 - перебір 2D масивів ===== -->
+        <div class="tab-content" id="tab-part2">
+          <!-- ТЕОРІЯ 2 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2>Теорія</h2>
+            </div>
+
+            <div class="content">
+              <hr />
+
+              <!-- Підтема -->
+              <h3 id="">✨ Підтема</h3>
+              <p>Пояснення</p>
+              <pre><code class="language-javascript">приклад коду</code></pre>
+              <img src="./images/part_2_0#.jpg" alt="результат коду" />
+
+              <hr />
+            </div>
+          </section>
+
+          <!-- ПРИКЛАД 2 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2>Приклад</h2>
+            </div>
+
+            <div class="content">
+              <h3>✨ Завдання</h3>
+              <ol>
+                <li>...</li>
+              </ol>
+
+              <h3>✨ Приклад розв'язання</h3>
+              <pre><code class="language-javascript">приклад коду</code></pre>
+
+              <h3>✨ Результат</h3>
+              <img src="./images/part_2_0#.jpg" alt="результат коду" />
+            </div>
+          </section>
+
+          <!-- ЗАВДАННЯ 2 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2 class="accent">Завдання 2</h2>
+            </div>
+
+            <div class="content">
+              <h3>✨ Завдання</h3>
+              <ol>
+                <li>...</li>
+              </ol>
+
+              <h3>✨ Очікуваний результат</h3>
+              <img src="./images/part_2_0#.jpg" alt="результат коду" />
+            </div>
+          </section>
+        </div>
+
+        <!-- ===== ЧАСТИНА 3 - типи даних ===== -->
+        <div class="tab-content" id="tab-part3">
+          <!-- ТЕОРІЯ 3 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2>Теорія</h2>
+            </div>
+
+            <div class="content">
+              <hr />
+
+              <!-- Підтема -->
+              <h3 id="">✨ Підтема</h3>
+              <p>Пояснення</p>
+              <pre><code class="language-javascript">приклад коду</code></pre>
+              <img src="./images/part_3_0#.jpg" alt="результат коду" />
+
+              <hr />
+            </div>
+          </section>
+
+          <!-- ПРИКЛАД 3 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2>Приклад</h2>
+            </div>
+
+            <div class="content">
+              <h3>✨ Завдання</h3>
+              <ol>
+                <li>...</li>
+              </ol>
+
+              <h3>✨ Приклад розв'язання</h3>
+              <pre><code class="language-javascript">приклад коду</code></pre>
+
+              <h3>✨ Результат</h3>
+              <img src="./images/part_3_0#.jpg" alt="результат коду" />
+            </div>
+          </section>
+
+          <!-- ЗАВДАННЯ 3 -->
+          <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2 class="accent">Завдання 3</h2>
+            </div>
+
+            <div class="content">
+              <h3>✨ Завдання</h3>
+              <ol>
+                <li>...</li>
+              </ol>
+
+              <h3>✨ Очікуваний результат</h3>
+              <img src="./images/part_3_0#.jpg" alt="результат коду" />
+            </div>
+          </section>
+        </div>
+
+        <!-- ===== ДОМАШНЄ ЗАВДАННЯ ===== -->
+        <!-- <div class="tab-content" id="tab-part4"> -->
+        <!-- КОД ДЛЯ ПОВТОРЕННЯ -->
+        <!-- <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2>Повторення</h2>
+            </div>
+
+            <div class="content">
+              <h3>✨ Код для повторення теми</h3>
+              <p>
+                Ознайомтеся з наведеним нижче кодом та спробуйте самостійно
+                розібратися, що робить кожен рядок:
+              </p>
+
+              <pre><code class="language-javascript">приклад коду</code></pre>
+
+              <p>Що виведеться у консоль після виконання цього коду?</p>
+              <ol>
+                <li><img src="./images/hw_01.jpg" alt="результат коду" /></li>
+                <li><img src="./images/hw_02.jpg" alt="результат коду" /></li>
+                <li><img src="./images/hw_03.jpg" alt="результат коду" /></li>
+                <li><img src="./images/hw_04.jpg" alt="результат коду" /></li>
+                <li><img src="./images/hw_05.jpg" alt="результат коду" /></li>
+              </ol>
+            </div>
+          </section> -->
+
+        <!-- ENGLISH -->
+        <!-- <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2>English</h2>
+            </div>
+
+            <div class="content">
+              <h3>✨ English dictionary</h3>
+              <p>Англійські слова до теми:</p>
+              <ul>
+                <li><b>word</b> — слово;</li>
+              </ul>
+            </div>
+          </section> -->
+
+        <!-- ТЕСТ -->
+        <!-- <section>
+            <div class="toggle-header">
+              <button type="button">▶</button>
+              <h2 class="accent">Тест</h2>
+            </div>
+
+            <div class="content">
+              <h3>✨ Тест для закріплення знань</h3>
+              <p>
+                Щоб повторити і краще запам'ятати тему, пройдіть тест за
+                посиланням:
+              </p>
+              <a href="#" target="_blank" class="test-link">Тест</a>
+            </div>
+          </section> -->
+        <!-- </div> -->
+      </main>
+    </div>
+
+    <footer>
+      Made by
+      <a href="https://github.com/helenhapp" target="_blank">Olena Hapchyna</a>
+    </footer>
 
     <button id="scrollTopBtn" title="Повернутися нагору">🚀</button>
   </body>
