@@ -1,30 +1,118 @@
-// const game = [
-//   ["X", "O", "X"],
-//   ["X", "X", "O"],
-//   ["O", "O", ""],
+// console.log();
+
+// const map = [
+//   ["🌳", ".", ".", "."],
+//   [".", ".", "🌳", "."],
+//   ["💎", ".", ".", "."],
+//   [".", "🌳", ".", "💎"],
 // ];
+
+// console.log(map[0][0]);
+// console.log(map[3][3]);
+// console.log();
+
+// let text = "";
+// for (let i = 0; i < map.length; i++) {
+//   for (let j = 0; j < map[i].length; j++) {
+//     text += map[i][j];
+//     text += " ";
+//   }
+//   text += "\n";
+// }
+// console.log(text);
+
+// let trees = 0;
+// let treasures = 0;
+// for (let i = 0; i < map.length; i++) {
+//   for (let j = 0; j < map[i].length; j++) {
+//     if (map[i][j] === "🌳") {
+//       trees++;
+//     } else if (map[i][j] === "💎") {
+//       treasures++;
+//     }
+//   }
+// }
+// console.log(`Дерев: ${trees}`);
+// console.log(`Скарбів: ${treasures}`);
+// console.log();
+
+// for (let i = 0; i < map.length; i++) {
+//   for (let j = 0; j < map[i].length; j++) {
+//     if (map[i][j] === "💎") {
+//       console.log(`Скарб знайдено: рядок ${i + 1}, стовпчик ${j + 1}.`);
+//     }
+//   }
+// }
 
 console.log();
 
-const matrix = [
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
+const sea = [
+  ["~", "~", "~"],
+  ["🐟", "~", "~"],
+  ["~", "~", "🐠"],
 ];
 
-console.log(matrix);
+console.log(sea[1][0]);
+console.log(sea[2][2]);
 
-console.log("1-й рядок матриці:", matrix[0]);
-console.log("2-й рядок матриці:", matrix[1]);
+console.log();
 
-console.log("1-й елемент 1-го рядка:", matrix[0][0]);
-console.log("2-й елемент 1-го рядка:", matrix[0][1]);
-console.log("3-й елемент 1-го рядка:", matrix[0][2]);
-console.log("4-й елемент 1-го рядка:", matrix[0][3], "\n");
+let text = "🦀 "; // початковий рядок
 
-console.log("1-й елемент 2-го рядка:", matrix[1][0]);
-console.log("2-й елемент 2-го рядка:", matrix[1][1]);
-console.log("3-й елемент 2-го рядка:", matrix[1][2]);
-console.log("4-й елемент 2-го рядка:", matrix[1][3], "\n");
+for (let i = 0; i < sea.length; i++) {
+  for (let j = 0; j < sea[i].length; j++) {
+    text += sea[i][j]; // додаємо по черзі елементи масиву
+    text += " "; // додаємо пробіл після кожного елемента
+  }
 
-console.log(matrix.length); // кількість рядків
-console.log(matrix[0].length); // к-ть елементів у 1-му рядку
+  text += "~ 🌊 ~ "; // додаємо хвилю після кожного рядка
+}
+
+console.log(text); // виводимо результат
+
+console.log();
+
+let fish = 0;
+
+for (let i = 0; i < sea.length; i++) {
+  for (let j = 0; j < sea[i].length; j++) {
+    if (sea[i][j] === "🐠" || sea[i][j] === "🐟") {
+      fish++;
+    }
+  }
+}
+
+console.log(`Рибок: ${fish}`); // виводимо результат
+
+console.log();
+
+for (let i = 0; i < sea.length; i++) {
+  for (let j = 0; j < sea[i].length; j++) {
+    if (sea[i][j] === "🐠" || sea[i][j] === "🐟") {
+      console.log(`Знайдено рибку: рядок ${i + 1}, стовпчик ${j + 1}.`);
+    }
+  }
+}
+
+// let trees = 0;
+// let treasures = 0;
+// for (let i = 0; i < map.length; i++) {
+//   for (let j = 0; j < map[i].length; j++) {
+//     if (map[i][j] === "🌳") {
+//       trees++;
+//     } else if (map[i][j] === "💎") {
+//       treasures++;
+//     }
+//   }
+// }
+// console.log(`Дерев: ${trees}`);
+// console.log(`Скарбів: ${treasures}`);
+// console.log();
+
+// for (let i = 0; i < map.length; i++) {
+//   for (let j = 0; j < map[i].length; j++) {
+//     if (map[i][j] === "💎") {
+//       console.log(`Скарб знайдено: рядок ${i + 1}, стовпчик ${j + 1}.`);
+//     }
+//   }
+// }
